@@ -1,21 +1,26 @@
 name: Daily AI Summary
 on:
   schedule:
-    - cron: '0 18 * * *' # Время в UTC (18:00 UTC = 21:00 по Москве/Киеву)
-  workflow_dispatch: # Позволяет запускать вручную кнопкой
+    - cron: '0 18 * * *' # 21:00 по МСК/Киеву
+  workflow_dispatch: # Позволяет запускать вручную
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4 # Обновили версию
+
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5 # Обновили версию
         with:
-          python-version: '3.9'
+          python-version: '3.11'
+
       - name: Install dependencies
-        run: pip install google-generativeai requests
+        run: |
+          python -m pip install --upgrade pip
+          pip install google-generativeai requests
+
       - name: Run script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
