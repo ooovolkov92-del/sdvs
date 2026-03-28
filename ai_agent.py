@@ -11,7 +11,7 @@ def get_ai_summary():
     genai.configure(api_key=GEMINI_API_KEY)
     model = genai.GenerativeModel('gemini-1.5-flash')
     
-    prompt = "Найди новости за последние 24 часа о внедрении ИИ в бизнес-процессы. Напиши краткую выжимку на русском языке с эмодзи для Telegram."
+    prompt = "Найди новости за последние 24 часа о внедрении ИИ в бизнес-процессы. Напиши краткую выжимку на русском языке с эмодзи для Telegram. Добавь ссылки на источники информации"
     
     response = model.generate_content(prompt)
     return response.text
