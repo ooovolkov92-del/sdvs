@@ -13,8 +13,8 @@ def get_ai_summary():
         raise ValueError("Ошибка: GEMINI_API_KEY не найден в Secrets!")
     
     genai.configure(api_key=GEMINI_API_KEY)
-    # Используем проверенную модель 1.5-flash
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    # Используем проверенную модель 2.5-flash
+    model = genai.GenerativeModel('gemini-2.5-flash')
     
     prompt = "Найди и кратко перескажи 3 главные новости за сегодня о внедрении ИИ в бизнес-процессы. На русском языке, с эмодзи. Прикрпи ссылки на источники."
     
